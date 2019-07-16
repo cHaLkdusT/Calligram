@@ -3,20 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		45F145DF123527702F570FA6 /* Pods_CalligramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F04620CC4DFC6C0F2F468925 /* Pods_CalligramUITests.framework */; };
 		88E653EC1AB1DA56F20BC8FA /* Pods_Calligram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220CBD2E7525036E350EA1F /* Pods_Calligram.framework */; };
 		AE48721F74685A6AF7D3C4DF /* Pods_CalligramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17CBE33C018A1D42D98EAD9 /* Pods_CalligramTests.framework */; };
+		CB49643622DE2FE1006693F6 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49643422DE2FE1006693F6 /* ImageRow.swift */; };
+		CB49643722DE2FE1006693F6 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49643522DE2FE1006693F6 /* ImagePickerController.swift */; };
 		CB56F3BC22DC78FE00F13D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3BB22DC78FE00F13D67 /* AppDelegate.swift */; };
-		CB56F3BE22DC78FE00F13D67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3BD22DC78FE00F13D67 /* ViewController.swift */; };
 		CB56F3C122DC78FE00F13D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB56F3BF22DC78FE00F13D67 /* Main.storyboard */; };
 		CB56F3C322DC78FF00F13D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB56F3C222DC78FF00F13D67 /* Assets.xcassets */; };
 		CB56F3C622DC78FF00F13D67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB56F3C422DC78FF00F13D67 /* LaunchScreen.storyboard */; };
 		CB56F3D122DC78FF00F13D67 /* CalligramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3D022DC78FF00F13D67 /* CalligramTests.swift */; };
 		CB56F3DC22DC78FF00F13D67 /* CalligramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3DB22DC78FF00F13D67 /* CalligramUITests.swift */; };
+		CB56F3EB22DC7F3300F13D67 /* CalliCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +44,10 @@
 		8220CBD2E7525036E350EA1F /* Pods_Calligram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calligram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17CBE33C018A1D42D98EAD9 /* Pods_CalligramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalligramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FE6BD1AD10666DA002C27E /* Pods-CalligramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramUITests.release.xcconfig"; path = "Target Support Files/Pods-CalligramUITests/Pods-CalligramUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CB49643422DE2FE1006693F6 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
+		CB49643522DE2FE1006693F6 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		CB56F3B822DC78FE00F13D67 /* Calligram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calligram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB56F3BB22DC78FE00F13D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB56F3BD22DC78FE00F13D67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CB56F3C022DC78FE00F13D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB56F3C222DC78FF00F13D67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB56F3C522DC78FF00F13D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		CB56F3D722DC78FF00F13D67 /* CalligramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalligramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB56F3DB22DC78FF00F13D67 /* CalligramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalligramUITests.swift; sourceTree = "<group>"; };
 		CB56F3DD22DC78FF00F13D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalliCardViewController.swift; sourceTree = "<group>"; };
 		CC0798C18D5BAE378094DDAF /* Pods-CalligramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramTests.release.xcconfig"; path = "Target Support Files/Pods-CalligramTests/Pods-CalligramTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5EF818A722B3277E7C617FF /* Pods-CalligramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalligramUITests/Pods-CalligramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E84834971C863C639ED08CB9 /* Pods-Calligram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calligram.debug.xcconfig"; path = "Target Support Files/Pods-Calligram/Pods-Calligram.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,7 +103,6 @@
 				E5EF818A722B3277E7C617FF /* Pods-CalligramUITests.debug.xcconfig */,
 				C2FE6BD1AD10666DA002C27E /* Pods-CalligramUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -111,6 +114,23 @@
 				F04620CC4DFC6C0F2F468925 /* Pods_CalligramUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB49643022DE2FB5006693F6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB49643322DE2FD6006693F6 /* ImageRow */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CB49643322DE2FD6006693F6 /* ImageRow */ = {
+			isa = PBXGroup;
+			children = (
+				CB49643522DE2FE1006693F6 /* ImagePickerController.swift */,
+				CB49643422DE2FE1006693F6 /* ImageRow.swift */,
+			);
+			path = ImageRow;
 			sourceTree = "<group>";
 		};
 		CB56F3AF22DC78FE00F13D67 = {
@@ -138,8 +158,9 @@
 		CB56F3BA22DC78FE00F13D67 /* Calligram */ = {
 			isa = PBXGroup;
 			children = (
+				CB49643022DE2FB5006693F6 /* Utils */,
+				CB56F3E922DC7F1B00F13D67 /* Controller */,
 				CB56F3BB22DC78FE00F13D67 /* AppDelegate.swift */,
-				CB56F3BD22DC78FE00F13D67 /* ViewController.swift */,
 				CB56F3BF22DC78FE00F13D67 /* Main.storyboard */,
 				CB56F3C222DC78FF00F13D67 /* Assets.xcassets */,
 				CB56F3C422DC78FF00F13D67 /* LaunchScreen.storyboard */,
@@ -164,6 +185,14 @@
 				CB56F3DD22DC78FF00F13D67 /* Info.plist */,
 			);
 			path = CalligramUITests;
+			sourceTree = "<group>";
+		};
+		CB56F3E922DC7F1B00F13D67 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,8 +416,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB56F3BE22DC78FE00F13D67 /* ViewController.swift in Sources */,
 				CB56F3BC22DC78FE00F13D67 /* AppDelegate.swift in Sources */,
+				CB56F3EB22DC7F3300F13D67 /* CalliCardViewController.swift in Sources */,
+				CB49643622DE2FE1006693F6 /* ImageRow.swift in Sources */,
+				CB49643722DE2FE1006693F6 /* ImagePickerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
