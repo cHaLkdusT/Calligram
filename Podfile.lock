@@ -1,20 +1,30 @@
 PODS:
   - DZNEmptyDataSet (1.8.1)
   - Eureka (5.0.0)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
 
 DEPENDENCIES:
   - DZNEmptyDataSet
   - Eureka
+  - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - DZNEmptyDataSet
     - Eureka
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: 0f64f477ec8ef6201c6fec143d60ff5c201cf654
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
 
-PODFILE CHECKSUM: 9dd33698223188a13a5b8aac66b2a87f79460652
+PODFILE CHECKSUM: 5b49edc685afd7476344f7e3019629609b5f44fa
 
 COCOAPODS: 1.7.2

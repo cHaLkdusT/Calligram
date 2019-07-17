@@ -18,10 +18,12 @@
 		CB56F3C622DC78FF00F13D67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB56F3C422DC78FF00F13D67 /* LaunchScreen.storyboard */; };
 		CB56F3D122DC78FF00F13D67 /* CalligramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3D022DC78FF00F13D67 /* CalligramTests.swift */; };
 		CB56F3DC22DC78FF00F13D67 /* CalligramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3DB22DC78FF00F13D67 /* CalligramUITests.swift */; };
-		CB56F3EB22DC7F3300F13D67 /* CalliCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */; };
+		CB56F3EB22DC7F3300F13D67 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3EA22DC7F3300F13D67 /* MyCardViewController.swift */; };
 		CBB6661122DF0CD80003AABF /* BrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6661022DF0CD80003AABF /* BrowserTableViewController.swift */; };
 		CBB6661322DF151D0003AABF /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6661222DF151D0003AABF /* ContactsTableViewController.swift */; };
 		CBB6661622DF162C0003AABF /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB6661522DF162C0003AABF /* ContactCell.swift */; };
+		CBCD123A22DF73A6000050A2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD123922DF73A6000050A2 /* Card.swift */; };
+		CBCD123C22DF84D7000050A2 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCD123B22DF84D7000050A2 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +63,12 @@
 		CB56F3D722DC78FF00F13D67 /* CalligramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalligramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB56F3DB22DC78FF00F13D67 /* CalligramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalligramUITests.swift; sourceTree = "<group>"; };
 		CB56F3DD22DC78FF00F13D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalliCardViewController.swift; sourceTree = "<group>"; };
+		CB56F3EA22DC7F3300F13D67 /* MyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
 		CBB6661022DF0CD80003AABF /* BrowserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTableViewController.swift; sourceTree = "<group>"; };
 		CBB6661222DF151D0003AABF /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		CBB6661522DF162C0003AABF /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		CBCD123922DF73A6000050A2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CBCD123B22DF84D7000050A2 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		CC0798C18D5BAE378094DDAF /* Pods-CalligramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramTests.release.xcconfig"; path = "Target Support Files/Pods-CalligramTests/Pods-CalligramTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5EF818A722B3277E7C617FF /* Pods-CalligramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalligramUITests/Pods-CalligramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E84834971C863C639ED08CB9 /* Pods-Calligram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calligram.debug.xcconfig"; path = "Target Support Files/Pods-Calligram/Pods-Calligram.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				CB49643322DE2FD6006693F6 /* ImageRow */,
+				CBCD123B22DF84D7000050A2 /* UIImage+Resize.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 		CB56F3BA22DC78FE00F13D67 /* Calligram */ = {
 			isa = PBXGroup;
 			children = (
+				CBCD123822DF7394000050A2 /* Model */,
 				CBB6661422DF16170003AABF /* View */,
 				CB49643022DE2FB5006693F6 /* Utils */,
 				CB56F3E922DC7F1B00F13D67 /* Controller */,
@@ -197,7 +203,7 @@
 		CB56F3E922DC7F1B00F13D67 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CB56F3EA22DC7F3300F13D67 /* CalliCardViewController.swift */,
+				CB56F3EA22DC7F3300F13D67 /* MyCardViewController.swift */,
 				CBB6661022DF0CD80003AABF /* BrowserTableViewController.swift */,
 				CBB6661222DF151D0003AABF /* ContactsTableViewController.swift */,
 			);
@@ -210,6 +216,14 @@
 				CBB6661522DF162C0003AABF /* ContactCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CBCD123822DF7394000050A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CBCD123922DF73A6000050A2 /* Card.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,12 +448,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB56F3BC22DC78FE00F13D67 /* AppDelegate.swift in Sources */,
-				CB56F3EB22DC7F3300F13D67 /* CalliCardViewController.swift in Sources */,
+				CB56F3EB22DC7F3300F13D67 /* MyCardViewController.swift in Sources */,
 				CBB6661322DF151D0003AABF /* ContactsTableViewController.swift in Sources */,
 				CBB6661122DF0CD80003AABF /* BrowserTableViewController.swift in Sources */,
 				CB49643622DE2FE1006693F6 /* ImageRow.swift in Sources */,
+				CBCD123C22DF84D7000050A2 /* UIImage+Resize.swift in Sources */,
 				CBB6661622DF162C0003AABF /* ContactCell.swift in Sources */,
 				CB49643722DE2FE1006693F6 /* ImagePickerController.swift in Sources */,
+				CBCD123A22DF73A6000050A2 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ target 'Calligram' do
   # Pods for Calligram
   pod 'Eureka'
   pod 'DZNEmptyDataSet'
+  pod 'RealmSwift'
 
   target 'CalligramTests' do
     inherit! :search_paths

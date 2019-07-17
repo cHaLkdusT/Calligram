@@ -13,7 +13,7 @@
         <!--My Profile-->
         <scene sceneID="SPS-vz-Bb6">
             <objects>
-                <viewController id="df3-dN-BoM" customClass="CalliCardViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="df3-dN-BoM" customClass="MyCardViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X3b-0T-Gca">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
