@@ -28,8 +28,9 @@ class CalliCardViewController: FormViewController {
         $0.title =  "Last Name"
         $0.placeholder = "Dela Cruiser"
       }
-      <<< TextRow("Company").cellSetup { cell, row in
-        cell.textField.placeholder = row.tag
+      <<< NameRow() {
+        $0.title =  "Company"
+        $0.placeholder = "15th Team"
       }
       +++ Section("Contact Details")
       <<< EmailRow() {

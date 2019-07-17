@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calli Card View Controller-->
+        <!--My Profile-->
         <scene sceneID="SPS-vz-Bb6">
             <objects>
                 <viewController id="df3-dN-BoM" customClass="CalliCardViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,27 +20,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="27n-BI-vp4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AR8-QX-tzh"/>
+                    <navigationItem key="navigationItem" title="My Profile" id="bcM-Sp-16W">
+                        <barButtonItem key="rightBarButtonItem" title="Share" image="twotone_share_black_24pt" id="1zy-2c-uJY">
+                            <connections>
+                                <segue destination="Imj-f7-KtR" kind="presentation" id="sl2-oj-JbZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cH8-bH-1sW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1446" y="339"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="e1C-b2-87W">
-            <objects>
-                <viewController id="amT-3z-mL0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MFV-Sv-orP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="bR2-3g-8gb"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="mgD-yV-WtV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AeO-G3-vjC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="621" y="-309"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2V5-KH-Nmq">
@@ -52,7 +42,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="amT-3z-mL0" kind="relationship" relationship="viewControllers" id="Z9o-Lt-g4B"/>
+                        <segue destination="oR7-9r-16U" kind="relationship" relationship="viewControllers" id="Z9o-Lt-g4B"/>
                         <segue destination="vkn-LR-Vaw" kind="relationship" relationship="viewControllers" id="7sy-Hz-4sN"/>
                     </connections>
                 </tabBarController>
@@ -60,11 +50,11 @@
             </objects>
             <point key="canvasLocation" x="-226" y="-9"/>
         </scene>
-        <!--Item 2-->
+        <!--Profile-->
         <scene sceneID="eoP-QO-c5P">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vkn-LR-Vaw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="oI9-Kc-J7P"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="twotone_face_black_24pt" id="oI9-Kc-J7P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JvB-NE-ekp">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -79,5 +69,155 @@
             </objects>
             <point key="canvasLocation" x="620.28985507246387" y="338.83928571428572"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="4Z6-AJ-njI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oR7-9r-16U" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contacts" image="twotone_contacts_black_24pt" id="mgD-yV-WtV"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rfs-ZB-cYl">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wl3-XW-dmC" kind="relationship" relationship="rootViewController" id="KNa-u6-3pX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7as-iG-m1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="620.28985507246387" y="-309.375"/>
+        </scene>
+        <!--Empty Data Set Source-->
+        <scene sceneID="TAd-l2-AjE">
+            <objects>
+                <tableViewController id="wl3-XW-dmC" customClass="ContactsTableViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qf8-ac-eUG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="120" id="aTA-Jt-OKu" customClass="ContactCell" customModule="Calligram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aTA-Jt-OKu" id="xV7-g1-e3s">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="119.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GY3-gY-QA8">
+                                            <rect key="frame" x="20" y="10" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="RhS-9R-6zS"/>
+                                                <constraint firstAttribute="width" constant="100" id="yMu-65-RO2"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-Fs-Pg2">
+                                            <rect key="frame" x="130" y="39.5" width="238" height="40.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Juan Dela Cruiser" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFF-WI-mLl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DevCon.ph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FW-WI-4IZ">
+                                                    <rect key="frame" x="0.0" y="22.5" width="76.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="GY3-gY-QA8" firstAttribute="centerY" secondItem="xV7-g1-e3s" secondAttribute="centerY" id="3aJ-np-1la"/>
+                                        <constraint firstItem="IV4-Fs-Pg2" firstAttribute="leading" secondItem="GY3-gY-QA8" secondAttribute="trailing" constant="10" id="6D5-v8-it0"/>
+                                        <constraint firstItem="GY3-gY-QA8" firstAttribute="leading" secondItem="xV7-g1-e3s" secondAttribute="leadingMargin" id="Ihi-bm-wD7"/>
+                                        <constraint firstItem="IV4-Fs-Pg2" firstAttribute="centerY" secondItem="xV7-g1-e3s" secondAttribute="centerY" id="MiZ-K3-5he"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IV4-Fs-Pg2" secondAttribute="trailing" id="Vin-Jz-gw7"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgPhoto" destination="GY3-gY-QA8" id="lpI-JV-8PD"/>
+                                    <outlet property="lblCompany" destination="3FW-WI-4IZ" id="kfu-3W-n2f"/>
+                                    <outlet property="lblName" destination="FFF-WI-mLl" id="Rk5-2c-n7r"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wl3-XW-dmC" id="WXQ-wp-BKk"/>
+                            <outlet property="delegate" destination="wl3-XW-dmC" id="rUE-RE-A8E"/>
+                            <outlet property="emptyDataSetSource" destination="wl3-XW-dmC" id="pSH-jL-6aY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Contacts" id="sS6-h2-gE9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXd-EY-xYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444.9275362318842" y="-309.375"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ed0-MT-RrR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Imj-f7-KtR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yYr-9O-qK2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lQT-C8-aHs" kind="relationship" relationship="rootViewController" id="tHY-NA-d1r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9f-gv-C8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2231.8840579710145" y="338.83928571428572"/>
+        </scene>
+        <!--Browser Table View Controller-->
+        <scene sceneID="jcL-wg-Ptq">
+            <objects>
+                <tableViewController id="lQT-C8-aHs" customClass="BrowserTableViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CBP-qw-13j">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6jb-rF-H7h">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6jb-rF-H7h" id="QP4-qG-56F">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lQT-C8-aHs" id="WXD-VT-7ta"/>
+                            <outlet property="delegate" destination="lQT-C8-aHs" id="EwL-iv-wsb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="IbR-Pb-JCu">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="5lJ-Jc-u2r">
+                            <connections>
+                                <action selector="dismiss:" destination="lQT-C8-aHs" id="WWD-8B-aAd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="zK9-jk-FgH">
+                            <connections>
+                                <action selector="done:" destination="lQT-C8-aHs" id="zsC-OV-pCQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLw-Xv-Gjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3051" y="339"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="twotone_contacts_black_24pt" width="24" height="24"/>
+        <image name="twotone_face_black_24pt" width="24" height="24"/>
+        <image name="twotone_share_black_24pt" width="24" height="24"/>
+    </resources>
 </document>
