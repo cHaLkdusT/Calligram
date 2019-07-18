@@ -7,14 +7,50 @@
 //
 
 import UIKit
+// We need to import MultipeerConnectivity
+import MultipeerConnectivity
+import RealmSwift
+
+// Here "dc" acts as the service type identifier prefix and
+// "cardshare" identifies the function of the service
+// NOTE: A service type should be a short text string in the same format
+// as a Bonjour service type that describes the app's networking protocol
+// Up to 14 characters, lowercaes ASCII letters, numbers and hypens
+let servicetype = "dc-cardshare"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var realm = try! Realm()
+  var myCard: Card?
+  
+  var session: MCSession!
+  var peerId: MCPeerID!
+  var advertiserAssistant: MCAdvertiserAssistant!
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    if let uuid = UserDefaults.standard.string(forKey: "UUID") {
+      myCard = realm.object(ofType: Card.self, forPrimaryKey: uuid)
+    }
+    /// Initialize and start the advertiser
+    // 1 Initialize an MCPeerID object with peer display name.
+    let peerName = myCard?.firstName ?? UIDevice.current.name
+    peerId = MCPeerID(displayName: peerName)
+    // 2 Initialize an instance of MCSession and set security
+    session = MCSession(peer: peerId,
+                        securityIdentity: nil,
+                        encryptionPreference: .none)
+    session.delegate = nil
+    // 3 Initialize MCAdvertiserAssistant with the service type identifier
+    // and MCSession instace we created. discoveryInfo is a dictionary of
+    // pairs advertised to peer browsers.
+    advertiserAssistant = MCAdvertiserAssistant(serviceType: servicetype,
+                                                discoveryInfo: nil,
+                                                session: session)
+    // 4 Being advertising the service
+    advertiserAssistant!.start()
     return true
   }
 
