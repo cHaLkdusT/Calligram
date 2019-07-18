@@ -25,4 +25,8 @@ class ContactCell: UITableViewCell {
     // Configure the view for the selected state
   }
   
+  func setRoundedProfile() {
+    imgPhoto.layer.cornerRadius = (imgPhoto.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+    imgPhoto.layer.masksToBounds = true
+  }
 }

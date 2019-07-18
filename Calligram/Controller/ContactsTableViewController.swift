@@ -8,13 +8,23 @@
 
 import UIKit
 import DZNEmptyDataSet
+import RealmSwift
 
 class ContactsTableViewController: UITableViewController {
+  
+  let realm = try! Realm()
+  var cards = [Card]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.tableView.rowHeight = 100
+    if let uuid = UserDefaults.standard.string(forKey: "UUID") {
+      let predicate = NSPredicate(format: "uuid != %@", uuid)
+      cards = realm.objects(Card.self).filter(predicate).map{ $0 }
+      tableView.reloadData()
+    }
+    
+    self.tableView.rowHeight = 90
     self.tableView.tableFooterView = UIView()
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
@@ -26,19 +36,24 @@ class ContactsTableViewController: UITableViewController {
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
-    return 0
+    return 1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    return 0
+    return cards.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as! ContactCell
     
     // Configure the cell...
+    let card = cards[indexPath.item]
+    cell.lblName.text = "\(card.firstName) \(card.lastName)"
+    cell.lblCompany.text = card.company
+    if let imageData = card.imageData {
+      cell.imgPhoto.image = UIImage(data: imageData)
+    }
+    cell.setRoundedProfile()
     
     return cell
   }

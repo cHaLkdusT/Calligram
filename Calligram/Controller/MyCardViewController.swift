@@ -12,12 +12,11 @@ import RealmSwift
 
 class MyCardViewController: FormViewController {
   
-  var card: Card!
   let realm = try! Realm()
+  var card: Card!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     if let uuid = UserDefaults.standard.string(forKey: "UUID") {
       // Fetch from Realm then assign to self.card
       card = realm.object(ofType: Card.self, forPrimaryKey: uuid)
@@ -123,7 +122,7 @@ class MyCardViewController: FormViewController {
               let phoneNumberRow = self.form.rowBy(tag: "phoneNumber") as? PhoneRow,
               let websiteRow = self.form.rowBy(tag: "website") as? URLRow {
               
-              let resizedImage = imageData.resizeImage(targetSize: CGSize(width: 200, height: 200))
+              let resizedImage = imageData.resizeImage(targetSize: CGSize(width: 500, height: 500))
               self.card.imageData = resizedImage.pngData()
               self.card.firstName = firstNameRow.value!
               self.card.lastName = lastNameRow.value!
