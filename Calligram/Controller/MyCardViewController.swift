@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 import Eureka
 import RealmSwift
 
@@ -105,6 +106,7 @@ class MyCardViewController: FormViewController {
       +++ Section()
       <<< ButtonRow() { (row: ButtonRow) -> Void in
         row.title = UserDefaults.standard.string(forKey: "UUID") == nil ? "Save" : "Update"
+        row.tag = "btnSave"
         }
         .onCellSelection { cell, row in
           guard let errors = row.section?.form?.validate(), errors.isEmpty else {
@@ -134,19 +136,24 @@ class MyCardViewController: FormViewController {
               self.realm.add(self.card)
               
               UserDefaults.standard.set(self.card.uuid, forKey: "UUID")
+              row.title = "Update"
+              row.updateCell()
             }
           }
     }
   }
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
+
+  @IBAction func addCardPressed(_ sender: UIBarButtonItem) {
+    let saveButton = form.rowBy(tag: "btnSave")!
+    let isFormValid = form.validate().isEmpty
+    if saveButton.title == "Save" || !isFormValid {
+      let alertController = UIAlertController(title: "",
+                                              message: "Please set up your Callicard first",
+                                              preferredStyle: .alert)
+      let action = UIAlertAction(title: "OK", style: .default)
+      alertController.addAction(action)
+      self.present(alertController, animated: true)
+    }
+  }
   
 }
