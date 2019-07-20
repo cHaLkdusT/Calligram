@@ -31,6 +31,15 @@ class ContactsTableViewController: UITableViewController {
     tableView.tableFooterView = UIView()
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showContactDetails" {
+      let navVC = segue.destination as? UINavigationController
+      let cdVC = navVC?.viewControllers.first as? ContactDetailsViewController
+      cdVC?.card = sender as? Card
+      cdVC?.contactListVC = self
+    }
+  }
+  
   func loadContacts() {
     if let uuid = UserDefaults.standard.string(forKey: "UUID") {
       let predicate = NSPredicate(format: "uuid != %@", uuid)
@@ -41,6 +50,8 @@ class ContactsTableViewController: UITableViewController {
       let pendingCards = realm.objects(Card.self).filter(pendingPredicate).map{ $0 }
       if !pendingCards.isEmpty {
         navigationController?.tabBarItem.badgeValue = "\(pendingCards.count)"
+      } else {
+        navigationController?.tabBarItem.badgeValue = nil
       }
     }
   }
@@ -80,6 +91,13 @@ extension ContactsTableViewController {
     cell.setRoundedProfile()
     
     return cell
+  }
+}
+
+extension ContactsTableViewController {
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let card = cards[indexPath.row]
+    self.performSegue(withIdentifier: "showContactDetails", sender: card)
   }
 }
 

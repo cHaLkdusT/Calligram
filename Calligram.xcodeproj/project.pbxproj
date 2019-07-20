@@ -11,6 +11,9 @@
 		88E653EC1AB1DA56F20BC8FA /* Pods_Calligram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220CBD2E7525036E350EA1F /* Pods_Calligram.framework */; };
 		AE48721F74685A6AF7D3C4DF /* Pods_CalligramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17CBE33C018A1D42D98EAD9 /* Pods_CalligramTests.framework */; };
 		CB43E6C322E33CE4003755C3 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43E6C222E33CE4003755C3 /* Notification+Name.swift */; };
+		CB43E6C622E350B9003755C3 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43E6C522E350B9003755C3 /* ContactDetailsViewController.swift */; };
+		CB43E6C822E352A7003755C3 /* ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB43E6C722E352A7003755C3 /* ProfilePhotoView.swift */; };
+		CB43E6CA22E352D0003755C3 /* ProfilePhoto.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB43E6C922E352D0003755C3 /* ProfilePhoto.xib */; };
 		CB49643622DE2FE1006693F6 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49643422DE2FE1006693F6 /* ImageRow.swift */; };
 		CB49643722DE2FE1006693F6 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49643522DE2FE1006693F6 /* ImagePickerController.swift */; };
 		CB56F3BC22DC78FE00F13D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB56F3BB22DC78FE00F13D67 /* AppDelegate.swift */; };
@@ -50,6 +53,9 @@
 		A17CBE33C018A1D42D98EAD9 /* Pods_CalligramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalligramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FE6BD1AD10666DA002C27E /* Pods-CalligramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalligramUITests.release.xcconfig"; path = "Target Support Files/Pods-CalligramUITests/Pods-CalligramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB43E6C222E33CE4003755C3 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		CB43E6C522E350B9003755C3 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
+		CB43E6C722E352A7003755C3 /* ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoView.swift; sourceTree = "<group>"; };
+		CB43E6C922E352D0003755C3 /* ProfilePhoto.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePhoto.xib; sourceTree = "<group>"; };
 		CB49643422DE2FE1006693F6 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = "<group>"; };
 		CB49643522DE2FE1006693F6 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		CB56F3B822DC78FE00F13D67 /* Calligram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calligram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +212,7 @@
 			children = (
 				CB56F3EA22DC7F3300F13D67 /* MyCardViewController.swift */,
 				CBB6661222DF151D0003AABF /* ContactsTableViewController.swift */,
+				CB43E6C522E350B9003755C3 /* ContactDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				CBB6661522DF162C0003AABF /* ContactCell.swift */,
+				CB43E6C722E352A7003755C3 /* ProfilePhotoView.swift */,
+				CB43E6C922E352D0003755C3 /* ProfilePhoto.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB43E6CA22E352D0003755C3 /* ProfilePhoto.xib in Resources */,
 				CB56F3C622DC78FF00F13D67 /* LaunchScreen.storyboard in Resources */,
 				CB56F3C322DC78FF00F13D67 /* Assets.xcassets in Resources */,
 				CB56F3C122DC78FE00F13D67 /* Main.storyboard in Resources */,
@@ -447,12 +457,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB43E6C622E350B9003755C3 /* ContactDetailsViewController.swift in Sources */,
 				CB56F3BC22DC78FE00F13D67 /* AppDelegate.swift in Sources */,
 				CB56F3EB22DC7F3300F13D67 /* MyCardViewController.swift in Sources */,
 				CBB6661322DF151D0003AABF /* ContactsTableViewController.swift in Sources */,
 				CB49643622DE2FE1006693F6 /* ImageRow.swift in Sources */,
 				CBCD123C22DF84D7000050A2 /* UIImage+Resize.swift in Sources */,
 				CBB6661622DF162C0003AABF /* ContactCell.swift in Sources */,
+				CB43E6C822E352A7003755C3 /* ProfilePhotoView.swift in Sources */,
 				CB49643722DE2FE1006693F6 /* ImagePickerController.swift in Sources */,
 				CBCD123A22DF73A6000050A2 /* Card.swift in Sources */,
 				CB43E6C322E33CE4003755C3 /* Notification+Name.swift in Sources */,

@@ -151,10 +151,45 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="sS6-h2-gE9"/>
+                    <connections>
+                        <segue destination="uNv-WK-JeA" kind="presentation" identifier="showContactDetails" id="XJk-rb-OmL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXd-EY-xYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444.9275362318842" y="-309.375"/>
+        </scene>
+        <!--Contact Details View Controller-->
+        <scene sceneID="Sc5-H5-45l">
+            <objects>
+                <viewController id="45i-pT-GPZ" customClass="ContactDetailsViewController" customModule="Calligram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VK9-1g-k7c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="u3R-ar-RGg"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="biA-vT-oQr">
+                        <barButtonItem key="leftBarButtonItem" title="Delete" id="CXQ-ch-3M5">
+                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deleteCard:" destination="45i-pT-GPZ" id="n2r-qZ-baN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="rj6-VO-l03">
+                            <connections>
+                                <action selector="saveCard:" destination="45i-pT-GPZ" id="CvD-PC-Sl8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnDeleteDiscard" destination="CXQ-ch-3M5" id="IKy-72-jeu"/>
+                        <outlet property="btnDoneSave" destination="rj6-VO-l03" id="oE1-sh-4MG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qvH-wi-DvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3051" y="-324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ed0-MT-RrR">
@@ -213,6 +248,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLw-Xv-Gjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3051" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VbJ-WB-6dx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uNv-WK-JeA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wG0-Le-5QJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="45i-pT-GPZ" kind="relationship" relationship="rootViewController" id="Pno-3B-mbI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhv-8y-g7r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2230" y="-324"/>
         </scene>
     </scenes>
     <resources>
