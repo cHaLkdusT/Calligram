@@ -20,6 +20,7 @@ class Card: Object, Codable {
   @objc dynamic var email = ""
   @objc dynamic var phoneNumber = ""
   @objc dynamic var website: String?
+  @objc dynamic var accepted = false
   
   override static func primaryKey() -> String? {
     return "uuid"

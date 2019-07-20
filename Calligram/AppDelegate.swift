@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     session = MCSession(peer: peerId,
                         securityIdentity: nil,
                         encryptionPreference: .none)
-    session.delegate = nil
+    session.delegate = self
     // 3 Initialize MCAdvertiserAssistant with the service type identifier
     // and MCSession instace we created. discoveryInfo is a dictionary of
     // pairs advertised to peer browsers.
@@ -76,6 +76,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-
+  func sendCardToPeer() {
+    if let data = try? JSONEncoder().encode(myCard) {
+      try? session.send(data, toPeers: session.connectedPeers, with: .reliable)
+    }
+  }
 }
 
+extension AppDelegate: MCSessionDelegate {
+  func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+    // Do nothing
+  }
+  
+  func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+    if let card = try? JSONDecoder().decode(Card.self, from: data) {
+      DispatchQueue.main.async {
+        try? self.realm.write {
+          self.realm.add(card, update: Realm.UpdatePolicy.modified)
+          NotificationCenter.default.post(name: .CalliDataReceivedNotification, object: nil)
+        }
+      }
+    }
+  }
+  
+  func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    // Do nothing
+  }
+  
+  func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+    // Do nothing
+  }
+  
+  func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+    // Do nothing
+  }
+}

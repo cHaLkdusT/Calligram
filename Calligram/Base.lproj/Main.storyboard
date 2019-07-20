@@ -23,7 +23,7 @@
                     <navigationItem key="navigationItem" title="My Profile" id="bcM-Sp-16W">
                         <barButtonItem key="rightBarButtonItem" title="Share" image="twotone_share_black_24pt" id="1zy-2c-uJY">
                             <connections>
-                                <segue destination="Imj-f7-KtR" kind="presentation" id="sl2-oj-JbZ"/>
+                                <action selector="addCardPressed:" destination="df3-dN-BoM" id="LWr-pi-idg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

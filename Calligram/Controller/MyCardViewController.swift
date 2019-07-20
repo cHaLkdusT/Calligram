@@ -18,9 +18,10 @@ class MyCardViewController: FormViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    if let uuid = UserDefaults.standard.string(forKey: "UUID") {
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    if let myCard = appDelegate?.myCard {
       // Fetch from Realm then assign to self.card
-      card = realm.object(ofType: Card.self, forPrimaryKey: uuid)
+      card = myCard
     } else {
       card = Card()
       card?.uuid = UUID().uuidString
@@ -153,7 +154,36 @@ class MyCardViewController: FormViewController {
       let action = UIAlertAction(title: "OK", style: .default)
       alertController.addAction(action)
       self.present(alertController, animated: true)
+    } else {
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      let browserViewController = MCBrowserViewController(serviceType: servicetype, session: appDelegate.session)
+      browserViewController.delegate = self
+      present(browserViewController, animated: true)
     }
   }
   
+  func sendCard() {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.sendCardToPeer()
+    show(message: "Callicard sent to nearby device")
+  }
+  
+  func show(message: String) {
+    let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .cancel)
+    alertController.addAction(action)
+    self.present(alertController, animated: true)
+  }
+}
+
+extension MyCardViewController: MCBrowserViewControllerDelegate {
+  func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+    browserViewController.dismiss(animated: true) {
+      self.sendCard()
+    }
+  }
+  
+  func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+    browserViewController.dismiss(animated: true)
+  }
 }

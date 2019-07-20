@@ -18,22 +18,44 @@ class ContactsTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    loadContacts()
+    
+    NotificationCenter
+      .default
+      .addObserver(self,
+                   selector: #selector(ContactsTableViewController.dataReceived(notification:)),
+                   name: .CalliDataReceivedNotification,
+                   object: nil)
+    
+    tableView.rowHeight = 90
+    tableView.tableFooterView = UIView()
+  }
+  
+  func loadContacts() {
     if let uuid = UserDefaults.standard.string(forKey: "UUID") {
       let predicate = NSPredicate(format: "uuid != %@", uuid)
       cards = realm.objects(Card.self).filter(predicate).map{ $0 }
       tableView.reloadData()
+      
+      let pendingPredicate = NSPredicate(format: "uuid != %@ AND accepted == %@", uuid, NSNumber(booleanLiteral: false))
+      let pendingCards = realm.objects(Card.self).filter(pendingPredicate).map{ $0 }
+      if !pendingCards.isEmpty {
+        navigationController?.tabBarItem.badgeValue = "\(pendingCards.count)"
+      }
     }
-    
-    self.tableView.rowHeight = 90
-    self.tableView.tableFooterView = UIView()
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
   
-  // MARK: - Table view data source
+  @objc func dataReceived(notification: Notification) {
+    loadContacts()
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+}
+
+// MARK: - Table view data source
+extension ContactsTableViewController {
   
   override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -50,59 +72,15 @@ class ContactsTableViewController: UITableViewController {
     let card = cards[indexPath.item]
     cell.lblName.text = "\(card.firstName) \(card.lastName)"
     cell.lblCompany.text = card.company
-    if let imageData = card.imageData {
+    if let imageData = card.imageData, card.accepted {
       cell.imgPhoto.image = UIImage(data: imageData)
+    } else {
+      cell.imgPhoto.image = UIImage(named: "twotone_priority_high_black_36pt")
     }
     cell.setRoundedProfile()
     
     return cell
   }
-  
-  /*
-   // Override to support conditional editing of the table view.
-   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the specified item to be editable.
-   return true
-   }
-   */
-  
-  /*
-   // Override to support editing the table view.
-   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-   if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-   }
-   }
-   */
-  
-  /*
-   // Override to support rearranging the table view.
-   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-   
-   }
-   */
-  
-  /*
-   // Override to support conditional rearranging of the table view.
-   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the item to be re-orderable.
-   return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
 }
 
 extension ContactsTableViewController: DZNEmptyDataSetSource {
