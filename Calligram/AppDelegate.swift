@@ -7,16 +7,12 @@
 //
 
 import UIKit
-// We need to import MultipeerConnectivity
-import MultipeerConnectivity
+// Step 1. Advertising a service
+// 1.1 Import MultipeerConnectivity framework
 import RealmSwift
 
-// Here "dc" acts as the service type identifier prefix and
-// "cardshare" identifies the function of the service
-// NOTE: A service type should be a short text string in the same format
-// as a Bonjour service type that describes the app's networking protocol
-// Up to 14 characters, lowercaes ASCII letters, numbers and hypens
-let servicetype = "dc-cardshare"
+// 1.2 Declare a constant for the service type that's being advertised and
+// searched for.
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,32 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var realm = try! Realm()
   var myCard: Card?
   
-  var session: MCSession!
-  var peerId: MCPeerID!
-  var advertiserAssistant: MCAdvertiserAssistant!
+  // 1.3 Add session, peer and advertiser properties
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     if let uuid = UserDefaults.standard.string(forKey: "UUID") {
       myCard = realm.object(ofType: Card.self, forPrimaryKey: uuid)
     }
-    /// Initialize and start the advertiser
-    // 1 Initialize an MCPeerID object with peer display name.
-    let peerName = myCard?.firstName ?? UIDevice.current.name
-    peerId = MCPeerID(displayName: peerName)
-    // 2 Initialize an instance of MCSession and set security
-    session = MCSession(peer: peerId,
-                        securityIdentity: nil,
-                        encryptionPreference: .none)
-    session.delegate = self
-    // 3 Initialize MCAdvertiserAssistant with the service type identifier
+    
+    // Initialize and start the advertiser
+    // 1.4 Initialize an MCPeerID object with peer display name.
+    // 1.5 Initialize an instance of MCSession and set security
+    // 3.4 Set MCSession's delegate
+    // 1.6 Initialize MCAdvertiserAssistant with the service type identifier
     // and MCSession instace we created. discoveryInfo is a dictionary of
-    // pairs advertised to peer browsers.
-    advertiserAssistant = MCAdvertiserAssistant(serviceType: servicetype,
-                                                discoveryInfo: nil,
-                                                session: session)
-    // 4 Being advertising the service
-    advertiserAssistant!.start()
+    // 1.7 Being advertising the service
     return true
   }
 
@@ -76,38 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-  func sendCardToPeer() {
-    if let data = try? JSONEncoder().encode(myCard) {
-      try? session.send(data, toPeers: session.connectedPeers, with: .reliable)
-    }
-  }
+  // Step 4. Sending card to the peer
+  // Now delegate emthods are in place, now we need to implement the logic
+  // that actually sends the data to the peer
+  // 4.1 Declare sendCardToPeer() function.
+  // Convert `myCard` to data, so we can send it over, via session.send(_:toPeers:with)
 }
 
-extension AppDelegate: MCSessionDelegate {
-  func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-    // Do nothing
-  }
-  
-  func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-    if let card = try? JSONDecoder().decode(Card.self, from: data) {
-      DispatchQueue.main.async {
-        try? self.realm.write {
-          self.realm.add(card, update: Realm.UpdatePolicy.modified)
-          NotificationCenter.default.post(name: .CalliDataReceivedNotification, object: nil)
-        }
-      }
-    }
-  }
-  
-  func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-    // Do nothing
-  }
-  
-  func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-    // Do nothing
-  }
-  
-  func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-    // Do nothing
-  }
-}
+// 3.2 Conform to MCSessionDelegate. Implement session(_:didReceive:fromPeer)
+// Convert data to Card and save it to Realm. Post an event in .CalliDataReceivedNotification
+// Then set self.sessions' delegate
