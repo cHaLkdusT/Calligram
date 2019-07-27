@@ -12,3 +12,7 @@ import Foundation
 // 3.1 Create Notification.Name for us subscribe events
 // Using Notification.Name, we no longer need to define string constants in a project.
 // The solution has become much easier, more elegant, and in line with Swift's API design.
+extension Notification.Name {
+  static let CalliDataReceivedNotification = Notification.Name("CalliDataReceivedNotification")
+}
+

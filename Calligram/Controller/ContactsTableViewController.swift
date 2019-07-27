@@ -22,6 +22,12 @@ class ContactsTableViewController: UITableViewController {
     
     // Step 5. Receiving card data from the peer
     // 5.1 Subscribe to .CalliDataReceivedNotification
+    NotificationCenter
+      .default
+      .addObserver(self,
+                   selector: #selector(ContactsTableViewController.dataReceived(notification:)),
+                   name: .CalliDataReceivedNotification,
+                   object: nil)
     
     tableView.rowHeight = 90
     tableView.tableFooterView = UIView()
@@ -55,8 +61,14 @@ class ContactsTableViewController: UITableViewController {
   // 5.3 Add dataReceived(notification:), which is called when the
   // notification is received. Inside it, we refresh the contact list by
   // calling loadContacts()
+  @objc func dataReceived(notification: Notification) {
+    loadContacts()
+  }
   
   // 5.2 To unregister from observing the notification, override `deinit`
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
 }
 
 // MARK: - Table view data source

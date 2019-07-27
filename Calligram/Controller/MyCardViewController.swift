@@ -9,6 +9,7 @@
 import UIKit
 // Step 2. Browsing for a service
 // 2.1 Import MultipeerConnectivy framework
+import MultipeerConnectivity
 import Eureka
 import RealmSwift
 
@@ -159,12 +160,21 @@ class MyCardViewController: FormViewController {
       // 2.3 Create an instance oF MCBrowserViewController. Set its delegate
       // and present it to the user. This is a built-in view controller that
       // will let the user select nearby devices
+      let appDelegate = UIApplication.shared.delegate as! AppDelegate
+      let browserViewController = MCBrowserViewController(serviceType: servicetype, session: appDelegate.session)
+      browserViewController.delegate = self
+      present(browserViewController, animated: true)
     }
   }
   
   // 4.2 Declare sendCard() function. Call appDelegate.sendCardToPeer()
   // to distribute the user's card to any connected peers. Then call show(message:).
   // In browserViewControllerDidFinish(_:), make sure to call sendCard() before dismissing
+  func sendCard() {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.sendCardToPeer()
+    show(message: "Callicard sent to nearby device")
+  }
   
   func show(message: String) {
     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -175,4 +185,16 @@ class MyCardViewController: FormViewController {
 }
 
 // 2.2 Extend MCBrowserViewControllerDelegate protocol
+extension MyCardViewController: MCBrowserViewControllerDelegate {
+  func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
+    browserViewController.dismiss(animated: true) {
+      self.sendCard()
+    }
+    // 4.3 sendCard on completion
+  }
+  
+  func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
+    browserViewController.dismiss(animated: true)
+  }
+}
 
